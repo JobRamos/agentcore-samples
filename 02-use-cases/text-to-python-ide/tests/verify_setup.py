@@ -16,7 +16,7 @@ def check_files():
     required_files = [
         "backend/main.py",
         "frontend/package.json",
-        "frontend/src/App.js",
+        "frontend/src/App.jsx",
         ".env",
         "start.sh",
         "setup.sh"

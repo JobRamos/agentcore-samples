@@ -23,7 +23,6 @@ load_dotenv(override=True)
 REGION      = os.getenv("AWS_REGION", "us-east-1")
 MEMORY_NAME = "text_to_python_ide_memory"
 INFO_FILE   = "memory_info.json"
-MODEL_ID    = "anthropic.claude-3-5-sonnet-20241022-v2:0"
 
 
 def get_client():
@@ -90,7 +89,7 @@ def create():
     )
 
     # Response key may vary by SDK version
-    memory_id = resp.get("memoryId") or resp.get("memory", {}).get("memoryId") or resp.get("id", "")
+    memory_id = resp.get("memory", {}).get("id", "") or resp.get("memoryId") or resp.get("memory", {}).get("memoryId") or resp.get("id", "")
     if not memory_id:
         # Try to find it from list
         print(f"   Response keys: {list(resp.keys())}")

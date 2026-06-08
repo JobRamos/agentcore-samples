@@ -103,8 +103,8 @@ def test_strands_with_agentcore_tool():
         
         # Create Bedrock model
         bedrock_model = BedrockModel(
-            model_id="anthropic.claude-3-5-sonnet-20241022-v2:0",
-            aws_region=aws_region
+            model_id="global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            region_name=aws_region
         )
         print("✓ Bedrock model created")
         

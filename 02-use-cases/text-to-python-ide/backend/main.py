@@ -865,7 +865,7 @@ def create_bedrock_model_with_fallback(aws_region: str):
     # Primary model: Claude Haiku 4.5 (Inference Profile)
     primary_model_id = "global.anthropic.claude-haiku-4-5-20251001-v1:0"
     fallback_model_id = "us.amazon.nova-premier-v1:0"
-    default_model_id = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+    default_model_id = "us.anthropic.claude-sonnet-4-6-20250514-v1:0"
 
     guardrail_kwargs = _build_guardrail_kwargs()
 
@@ -875,8 +875,7 @@ def create_bedrock_model_with_fallback(aws_region: str):
     try:
         primary_model = BedrockModel(
             model_id=primary_model_id,
-            aws_region=aws_region,
-            botocore_config=get_extended_botocore_config(),
+            region_name=aws_region,
             **guardrail_kwargs
         )
         print(f"✅ Primary inference profile {primary_model_id} initialized successfully")
@@ -891,8 +890,7 @@ def create_bedrock_model_with_fallback(aws_region: str):
         try:
             fallback_model = BedrockModel(
                 model_id=fallback_model_id,
-                aws_region=aws_region,
-                botocore_config=get_extended_botocore_config(),
+                region_name=aws_region,
                 **guardrail_kwargs
             )
             print(f"✅ Fallback inference profile {fallback_model_id} initialized successfully")
@@ -907,8 +905,7 @@ def create_bedrock_model_with_fallback(aws_region: str):
             try:
                 default_model = BedrockModel(
                     model_id=default_model_id,
-                    aws_region=aws_region,
-                    botocore_config=get_extended_botocore_config(),
+                    region_name=aws_region,
                     **guardrail_kwargs
                 )
                 print(f"✅ Default model {default_model_id} initialized")

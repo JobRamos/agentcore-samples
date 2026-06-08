@@ -33,8 +33,8 @@ def test_bedrock_model():
         from strands.models import BedrockModel
         
         model = BedrockModel(
-            model_id="anthropic.claude-3-5-sonnet-20241022-v2:0",
-            aws_region=os.getenv('AWS_REGION', 'us-east-1')
+            model_id="global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            region_name=os.getenv('AWS_REGION', 'us-east-1')
         )
         print("✓ BedrockModel created successfully")
         return True
@@ -58,10 +58,10 @@ def test_agent_creation():
             return f"Tool received: {message}"
         
         model = BedrockModel(
-            model_id="anthropic.claude-3-5-sonnet-20241022-v2:0",
-            aws_region=os.getenv('AWS_REGION', 'us-east-1')
+            model_id="global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            region_name=os.getenv('AWS_REGION', 'us-east-1')
         )
-        
+
         agent = Agent(
             model=model,
             tools=[test_tool],

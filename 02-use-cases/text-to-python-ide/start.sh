@@ -186,11 +186,14 @@ for p in ['arn:aws:iam::aws:policy/AmazonBedrockFullAccess','arn:aws:iam::aws:po
         echo "✅ Memory already provisioned (memory_info.json exists)"
     fi
 
-    # 3. Deploy Runtime (requires Docker)
+    # 3. Deploy Runtime (requires Docker or Finch)
+    CONTAINER_ENGINE="${CONTAINER_ENGINE:-docker}"
+    export CONTAINER_ENGINE
     if [ ! -f "runtime_info.json" ]; then
-        if ! command -v docker &> /dev/null || ! docker info &> /dev/null; then
+        if ! command -v "$CONTAINER_ENGINE" &> /dev/null || ! "$CONTAINER_ENGINE" info &> /dev/null; then
             echo ""
-            echo "❌ Docker is required but not running. Please start Docker Desktop and try again."
+            echo "❌ $CONTAINER_ENGINE is required but not running. Please start Docker Desktop (or Finch) and try again."
+            echo "   Tip: export CONTAINER_ENGINE=finch to use Finch instead of Docker."
             exit 1
         fi
         echo ""

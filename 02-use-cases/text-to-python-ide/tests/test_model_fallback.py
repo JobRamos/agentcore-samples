@@ -30,7 +30,7 @@ def test_model_availability():
         test_models = [
             ("Claude Haiku 4.5", "global.anthropic.claude-haiku-4-5-20251001-v1:0"),
             ("Nova Premier", "us.amazon.nova-premier-v1:0"),
-            ("Claude 3.5 Sonnet", "anthropic.claude-3-5-sonnet-20241022-v2:0")
+            ("Claude Sonnet 4.6", "us.anthropic.claude-sonnet-4-6-20250514-v1:0")
         ]
         
         print(f"\nFound {len(available_models)} total models in {aws_region}")

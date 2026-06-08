@@ -93,8 +93,8 @@ class AutomatedE2ETest:
             response = requests.get("http://localhost:8000/api/agents/status", timeout=10)
             if response.status_code == 200:
                 data = response.json()
-                return self.log_result("Agents Status", 
-                                     data.get("agents_initialized", False),
+                return self.log_result("Agents Status",
+                                     data.get("total", 0) > 0,
                                      f"Model: {data.get('current_model', 'Unknown')}")
             else:
                 return self.log_result("Agents Status", False, f"Status code: {response.status_code}")

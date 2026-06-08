@@ -96,7 +96,7 @@ def test_bedrock_access(session):
         print(f"   Claude models: {len(claude_models)}")
         
         # Check for the specific model we use
-        target_model = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+        target_model = "global.anthropic.claude-haiku-4-5-20251001-v1:0"
         model_available = any(
             model.get('modelId') == target_model 
             for model in response.get('modelSummaries', [])

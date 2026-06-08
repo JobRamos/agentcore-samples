@@ -132,26 +132,29 @@ def ensure_ecr_repo(ecr_client):
             raise
 
 
+CONTAINER_ENGINE = os.getenv("CONTAINER_ENGINE", "docker")
+
+
 def docker_login(ecr_client):
     token = ecr_client.get_authorization_token()
     auth = token["authorizationData"][0]
     import base64
     user, password = base64.b64decode(auth["authorizationToken"]).decode().split(":", 1)
     registry = auth["proxyEndpoint"]
-    run(["docker", "login", "--username", user, "--password-stdin", registry],
+    run([CONTAINER_ENGINE, "login", "--username", user, "--password-stdin", registry],
         input=password.encode(), capture_output=True)
-    print("✅ Docker login successful")
+    print(f"✅ {CONTAINER_ENGINE} login successful")
 
 
 def build_and_push():
-    print("\n📦 Building Docker image...")
-    run(["docker", "build", "--platform", "linux/arm64", "-t", f"{RUNTIME_NAME}:latest", "."])
+    print(f"\n📦 Building image with {CONTAINER_ENGINE}...")
+    run([CONTAINER_ENGINE, "build", "--platform", "linux/arm64", "-t", f"{RUNTIME_NAME}:latest", "."])
 
     print("\n🏷️  Tagging image...")
-    run(["docker", "tag", f"{RUNTIME_NAME}:latest", IMAGE_URI])
+    run([CONTAINER_ENGINE, "tag", f"{RUNTIME_NAME}:latest", IMAGE_URI])
 
     print("\n⬆️  Pushing to ECR...")
-    run(["docker", "push", IMAGE_URI])
+    run([CONTAINER_ENGINE, "push", IMAGE_URI])
     print(f"✅ Image pushed: {IMAGE_URI}")
 
 
