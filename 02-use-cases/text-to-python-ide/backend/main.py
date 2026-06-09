@@ -9,7 +9,6 @@ import uuid
 from dotenv import load_dotenv
 import boto3
 from botocore.exceptions import NoCredentialsError, ProfileNotFound
-from botocore.config import Config
 from contextlib import asynccontextmanager
 import time
 from functools import lru_cache
@@ -818,27 +817,6 @@ def execute_python_code(code: str, description: str = "", files: list = None) ->
         print(f"📋 Full traceback: {traceback.format_exc()}")
         return f"Execution failed: {str(e)}"
 
-@lru_cache(maxsize=1)
-def get_extended_botocore_config():
-    """Get BotocoreConfig with extended timeouts for long-running code execution
-    
-    This configuration is essential for complex code execution that may take several minutes.
-    Based on Strands Agents documentation: https://strandsagents.com/1.0.x/documentation/docs/user-guide/concepts/model-providers/amazon-bedrock/
-    """
-    # Get timeout values from environment variables with sensible defaults
-    read_timeout = int(os.getenv('AWS_READ_TIMEOUT', '600'))  # 10 minutes default
-    connect_timeout = int(os.getenv('AWS_CONNECT_TIMEOUT', '120'))  # 2 minutes default
-    max_retries = int(os.getenv('AWS_MAX_RETRIES', '5'))  # 5 retries default
-    
-    return Config(
-        read_timeout=read_timeout,
-        connect_timeout=connect_timeout,
-        retries={
-            'max_attempts': max_retries,
-            'mode': 'adaptive'
-        },
-        max_pool_connections=50
-    )
 
 def _build_guardrail_kwargs() -> dict:
     """Build guardrail keyword arguments for BedrockModel if configured."""

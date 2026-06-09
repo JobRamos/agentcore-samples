@@ -9,7 +9,7 @@ The application has been updated to use **inference profile IDs** with the `us.`
 ### **Model IDs Updated:**
 - **✅ Primary**: `global.anthropic.claude-haiku-4-5-20251001-v1:0` (Claude Haiku 4.5 Inference Profile)
 - **✅ Fallback**: `us.amazon.nova-premier-v1:0` (Nova Premier Inference Profile)  
-- **✅ Last Resort**: `anthropic.claude-3-5-sonnet-20241022-v2:0` (Standard Model)
+- **✅ Last Resort**: `us.anthropic.claude-sonnet-4-6-20250514-v1:0` (Standard Model)
 
 ### **Code Changes:**
 - **✅ Backend**: Updated `create_bedrock_model_with_fallback()` function
@@ -30,7 +30,7 @@ The application has been updated to use **inference profile IDs** with the `us.`
 ### **Model Hierarchy Confirmed:**
 1. **🎯 PRIMARY**: `global.anthropic.claude-haiku-4-5-20251001-v1:0` - **ACTIVE**
 2. **🔄 FALLBACK**: `us.amazon.nova-premier-v1:0` - **READY**
-3. **🛡️ SAFETY NET**: `anthropic.claude-3-5-sonnet-20241022-v2:0` - **AVAILABLE**
+3. **🛡️ SAFETY NET**: `us.anthropic.claude-sonnet-4-6-20250514-v1:0` - **AVAILABLE**
 
 ## 🚀 **Benefits of Inference Profiles**
 

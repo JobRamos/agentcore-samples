@@ -20,8 +20,8 @@ The application has been successfully updated to use the latest and most powerfu
 - **Performance**: High-performance Amazon model with optimized inference
 - **Use Case**: Automatic fallback if Claude Haiku 4.5 unavailable
 
-### **3. Last Resort: Claude 3.5 Sonnet (Standard Model)**
-- **Model ID**: `anthropic.claude-3-5-sonnet-20241022-v2:0`
+### **3. Last Resort: Claude Sonnet 4.6 (Standard Model)**
+- **Model ID**: `us.anthropic.claude-sonnet-4-6-20250514-v1:0`
 - **Type**: Standard Model
 - **Status**: ✅ **AVAILABLE** (Safety net)
 - **Performance**: Proven reliable model
@@ -34,7 +34,7 @@ The application has been successfully updated to use the latest and most powerfu
 def create_bedrock_model_with_fallback(aws_region: str):
     # 1. Try Claude Haiku 4.5 (primary)
     # 2. Fall back to Nova Premier
-    # 3. Use Claude 3.5 Sonnet as last resort
+    # 3. Use Claude Sonnet 4.6 as last resort
     # 4. Automatic availability checking
     # 5. Graceful error handling
 ```
@@ -117,7 +117,7 @@ curl http://localhost:8000/api/agents/status | jq '.current_model'
 The application now uses:
 - **🎯 Claude Haiku 4.5** for superior AI capabilities
 - **🔄 Nova Premier** as intelligent fallback
-- **🛡️ Claude 3.5 Sonnet** as safety net
+- **🛡️ Claude Sonnet 4.6** as safety net
 - **🤖 Real AgentCore** for code execution
 - **📊 Full monitoring** and status reporting
 
