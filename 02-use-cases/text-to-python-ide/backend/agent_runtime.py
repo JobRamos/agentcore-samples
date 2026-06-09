@@ -18,7 +18,7 @@ from contextlib import asynccontextmanager
 
 import boto3
 from dotenv import load_dotenv
-from bedrock_agentcore.runtime.app import BedrockAgentCoreApp, BedrockAgentCoreContext
+from bedrock_agentcore.runtime.app import BedrockAgentCoreApp
 
 load_dotenv()
 
@@ -40,7 +40,6 @@ from main import (
     extract_text_from_agent_result,
     extract_image_data,
     prepare_interactive_code,
-    aws_region,
     guardrail_id,
     guardrail_version,
     MEMORY_ID,
