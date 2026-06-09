@@ -98,7 +98,7 @@ def get_aws_credentials():
             # Test the credentials
             sts = session.client('sts')
             identity = sts.get_caller_identity()
-            print(f"✅ Using AWS access keys")
+            print("✅ Using AWS access keys")
             print(f"   Account: {identity.get('Account', 'Unknown')}")
             print(f"   Access Key: {aws_access_key[:8]}...")
             print(f"   Region: {aws_region}")
