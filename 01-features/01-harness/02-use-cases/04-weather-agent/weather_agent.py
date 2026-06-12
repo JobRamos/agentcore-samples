@@ -36,14 +36,12 @@ Prerequisites:
 """
 
 import argparse
-import json
 import sys
 import time
 import uuid
 from pathlib import Path
 
 import boto3
-from botocore.exceptions import ClientError
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
@@ -442,10 +440,10 @@ try:
     if guardrail_id:
         print(f"  Guardrail:    {guardrail_id} (PII anonymization)")
     print(f"  Session:      {session_id}")
-    print(f"  Turns:        4 (weather, wind, UV/sun, moon+PII test)")
+    print("  Turns:        4 (weather, wind, UV/sun, moon+PII test)")
     print(f"  Observability: CloudWatch X-Ray traces (region: {REGION})")
     if not args.skip_evals:
-        print(f"  Evaluations:  Built-in + custom LLM-as-a-judge")
+        print("  Evaluations:  Built-in batch evaluators")
     print()
     print("  View traces: CloudWatch > X-Ray > Traces")
     print("  Filter: service(bedrock-agentcore)")

@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 
-from resources import ensure_resources, destroy_resources
+from resources import ensure_resources
 from agent import invoke_agent
 from observability import get_recent_traces, get_transaction_search_status
 from evaluation import run_batch_evaluation
@@ -128,4 +128,4 @@ async def sessions():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)

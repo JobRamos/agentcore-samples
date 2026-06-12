@@ -1,6 +1,5 @@
 """Agent invocation — streaming wrapper around invoke_harness."""
 
-import json
 import sys
 from pathlib import Path
 from typing import Generator

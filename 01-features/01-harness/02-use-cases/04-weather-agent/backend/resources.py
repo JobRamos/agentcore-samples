@@ -8,11 +8,10 @@ import uuid
 from pathlib import Path
 
 import boto3
-from botocore.exceptions import ClientError
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 from utils.iam import create_harness_role, delete_harness_role
-from utils.client import get_agentcore_control_client, get_agentcore_client
+from utils.client import get_agentcore_control_client
 
 STATE_FILE = Path(__file__).parent.parent / "resource_info.json"
 REGION = os.environ.get("AWS_DEFAULT_REGION") or boto3.session.Session().region_name or "us-east-1"
