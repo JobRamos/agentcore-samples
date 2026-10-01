@@ -65,7 +65,11 @@ const STEPS = [
   },
 ];
 
-const TARGET_ICONS = { lambda: "λ", sns: "✉", eventBridge: "⇶" };
+const TARGET_NAMES = {
+  lambda: "AWS Lambda",
+  sns: "Amazon SNS",
+  eventBridge: "Amazon EventBridge",
+};
 
 // Where each hook sits in the agent loop, for the intro diagram.
 const LOOP = [
@@ -873,7 +877,7 @@ function HooksPanel({
             </label>
             <code className="tl-event">{h.event}</code>
             <span className="target" title={h.arn}>
-              {TARGET_ICONS[h.target]} {h.target}
+              {TARGET_NAMES[h.target] || h.target}
             </span>
           </div>
           <div className="hook-desc">{h.description}</div>
@@ -1026,9 +1030,9 @@ function Behind({ feed, usage, orders, disabled, onReset }) {
             <summary>
               <span className="channel">
                 {n.channel === "sns"
-                  ? "✉ SNS"
+                  ? "Amazon SNS"
                   : n.channel === "eventbridge"
-                    ? "⇶ EventBridge"
+                    ? "Amazon EventBridge"
                     : n.channel}
               </span>
               <span>{n.summary}</span>

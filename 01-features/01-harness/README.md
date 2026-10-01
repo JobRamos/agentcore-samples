@@ -29,7 +29,7 @@ self-contained — copy any folder and it runs independently.
 - **Auth patterns** → `07-oauth/` (JWT inbound + OAuth outbound)
 - **Persistent storage** → `14-s3-filesystem/` (mount S3 as the agent filesystem; includes an LLM wiki)
 - **Build an agent with AWS Skills** → `02-use-cases/03-aws-builder-agent/` (harness + AWS Skills = an AWS engineering agent)
-- **Lifecycle hooks** → `02-use-cases/05-refund-desk-hooks/` (Lambda, SNS and EventBridge hooks at every point of the agent loop, in a guided web app)
+- **Lifecycle hooks** → `02-use-cases/05-refund-desk-hooks/` (AWS Lambda, Amazon SNS and Amazon EventBridge hooks at every point of the agent loop, in a guided web app)
 
 ## AgentCore CLI
 
