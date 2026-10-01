@@ -510,7 +510,10 @@ export default function App() {
           <div className="logo">RD</div>
           <div>
             <h1>Refund Desk</h1>
-            <p>A hands-on demo of AgentCore Harness lifecycle hooks</p>
+            <p>
+              A hands-on demo of Amazon Bedrock AgentCore Harness lifecycle
+              hooks
+            </p>
           </div>
         </div>
         <div className="status">
